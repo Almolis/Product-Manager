@@ -28,9 +28,10 @@ const productSchema = new mongoose.Schema({
 
 //apply the Schema to the collection and apply the schema to it
 //this constant is an array of objects
-const laptops = mongoose.connection.model("computers", productSchema)
-console.log(laptops)
-async function printAllLaptops(){
+const laptops = mongoose.connection.model("laptops", productSchema)
+
+
+function printAllLaptops(){
     return new Promise ((resolve, reject) => {
         laptops.find()
         .then(result => resolve(result))

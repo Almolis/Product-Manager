@@ -3,6 +3,7 @@ const express = require("express");
 const app = express(); 
 const cors = require("cors");
 const {printAllLaptops} = require("./products.module")
+const {login} = require ("./users.module")
 
 const port = process.env.PORT
 
@@ -19,3 +20,6 @@ app.get("/products", async (request, response)=>{
     response.json(result)
 }); 
 
+app.post("/login", async (request, response)=>{
+    await login(request.body.username, request.body.password)? response.status(200).send("Successful Login!"): response.status(400).send("User doesn't exist!"); 
+}); 
